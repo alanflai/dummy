@@ -1,2 +1,4 @@
 com\alanflai\dummy\Month.class
+com\alanflai\dummy\jettyserver.class
+com\alanflai\dummy\HelloServlet.class
 com\alanflai\dummy\App.class

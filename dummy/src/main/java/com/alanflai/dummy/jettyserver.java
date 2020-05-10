@@ -17,49 +17,41 @@ package com.alanflai.dummy;
  // along with this program.  If not, see <http://www.gnu.org/licenses/>.
  //========================================================================
  
-/**
- * App
+ /*
+ * jettyserver
  * 
- * Rel. 1.0.0
+ * The http/servelet server embedded into the java app.
+ * It uses the jetty framwork.
  * 
- * Calendario dell'anno, per ogni giorno del mese determina
- * e stampa il giorno della settimana.
- **/
+ * Jetty slogan:
+ * "Don’t deploy your application in Jetty, deploy Jetty in your application!"
+ */
 
- 
-import java.util.Calendar;
-import java.util.Date;
+import java.io.IOException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletHandler;
 
 
-public class App 
-{
-    public static void main( String[] args ) throws Exception
-    {
-        System.out.println( "******************* Calendario 2020 ****************" );
+public class jettyserver {
 
-        int port = 8085;
-        Server server = jettyserver.createServer(port);
+    public static Server createServer(int port) {
+
+        // Server creation
+        Server server =  new Server(port);
+
+        // Server handlers association
+        ServletHandler handler = new ServletHandler();
+        server.setHandler(handler);
         
-        server.start();
+      
+        // Servlet and relative url pate association to handler
+        handler.addServletWithMapping(HelloServlet.class, "/*");
 
-        // The use of server.join() the will make the current thread join and
-        // wait until the server thread is done executing.
-        server.join();
-
-        // 2020 Year Months
-        /*
-
-        Month oMonth = new Month();
-        
-        for(int i=0; i < 12; i++){
-
-            System.out.println("Mese: " + Month.MONTH_LIST[i]);
-            oMonth.list(2020,i+1);
-        }
-        */
-
+        return server;
     }
+
 }
