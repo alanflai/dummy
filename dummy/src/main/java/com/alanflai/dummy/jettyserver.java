@@ -38,6 +38,8 @@ import org.eclipse.jetty.servlet.ServletHandler;
 
 public class jettyserver {
 
+    private Server server;
+
     public static Server createServer(int port) {
 
         // Server creation
@@ -54,4 +56,28 @@ public class jettyserver {
         return server;
     }
 
+    public jettyserver(int port) throws Exception {
+
+        // Server creation
+        this.server =  new Server(port);
+
+        // Server handlers association
+        ServletHandler handler = new ServletHandler();
+        this.server.setHandler(handler);
+        
+      
+        // Servlet and relative url pate association to handler
+        handler.addServletWithMapping(HelloServlet.class, "/*");
+
+    }
+
+    public void start() throws Exception {
+        this.server.start();
+        //this.server.join();
+    }
+
+    public void stop() throws Exception {
+        this.server.stop();
+
+    }
 }

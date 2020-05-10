@@ -38,6 +38,7 @@ public class HelloServlet extends HttpServlet {
         response.setStatus(HttpServletResponse.SC_OK);
         response.setContentType("text/html");
         response.setCharacterEncoding("utf-8");
+        response.getWriter().println("<!-- [OK] -->");
         response.getWriter().println("<h1>Hello from HelloServlet</h1>");
     }
 }

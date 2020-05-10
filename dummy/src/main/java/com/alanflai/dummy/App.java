@@ -1,21 +1,21 @@
 package com.alanflai.dummy;
 
- //=======================================================================
- // Copyright (c) 2020 Andrea Sorrente
- //
- // This program is free software: you can redistribute it and/or modify
- // it under the terms of the GNU General Public License as published by
- // the Free Software Foundation, either version 3 of the License, or
- // (at your option) any later version.
- //
- // This program is distributed in the hope that it will be useful,
- // but WITHOUT ANY WARRANTY; without even the implied warranty of
- // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- // GNU General Public License for more details.
- //
- // You should have received a copy of the GNU General Public License
- // along with this program.  If not, see <http://www.gnu.org/licenses/>.
- //========================================================================
+//=======================================================================
+// Copyright (c) 2020 Andrea Sorrente
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//========================================================================
  
 /**
  * App
@@ -36,18 +36,14 @@ import org.eclipse.jetty.servlet.ServletHandler;
 
 public class App 
 {
-    public static void main( String[] args ) throws Exception
-    {
+    public static void main( String[] args ) throws Exception {
+
         System.out.println( "******************* Calendario 2020 ****************" );
 
         int port = 8085;
-        Server server = jettyserver.createServer(port);
+        jettyserver server = new jettyserver(port);
         
         server.start();
-
-        // The use of server.join() the will make the current thread join and
-        // wait until the server thread is done executing.
-        server.join();
 
         // 2020 Year Months
         /*
