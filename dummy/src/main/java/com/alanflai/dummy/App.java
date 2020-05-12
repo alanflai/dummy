@@ -36,12 +36,21 @@ import org.eclipse.jetty.servlet.ServletHandler;
 
 public class App 
 {
+    public static jettyserver server;
     public static void main( String[] args ) throws Exception {
+
+        int port;
 
         System.out.println( "******************* Calendario 2020 ****************" );
 
-        int port = 8085;
-        jettyserver server = new jettyserver(port);
+        if(args[0] != null){
+            port = Integer.parseInt(args[0]);
+        }
+        else {
+            port = 8085;
+        }
+        
+        server = new jettyserver(port);
         
         server.start();
 

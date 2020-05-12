@@ -32,13 +32,16 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 public class AppTest {
 
     private static int port = 8091;
-
     private static jettyserver server;
 
     @BeforeClass
     public static void setup() throws Exception {
        try {
-          server = new jettyserver(port);
+          // server = new jettyserver(port);
+          String args[] = new String[1];
+          args[0] = Integer.toString(port);
+          App.main(args);
+          server = App.server;
           server.start();
        }
        catch(Exception err){
